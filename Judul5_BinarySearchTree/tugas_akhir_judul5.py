@@ -1,0 +1,181 @@
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+
+
+class BST:
+    def __init__(self):
+        self.root = None
+
+    # Insert data
+    def insert_node(self, root, key):
+        if root is None:
+            return Node(key)
+
+        if key < root.key:
+            root.left = self.insert_node(root.left, key)
+
+        elif key > root.key:
+            root.right = self.insert_node(root.right, key)
+
+        return root
+
+    def insert(self, key):
+        self.root = self.insert_node(self.root, key)
+
+    # Search data
+    def search_node(self, root, key):
+        if root is None:
+            return False
+
+        if root.key == key:
+            return True
+
+        if key < root.key:
+            return self.search_node(root.left, key)
+
+        return self.search_node(root.right, key)
+
+    def search(self, key):
+        return self.search_node(self.root, key)
+
+    # Inorder
+    def inorder(self, root):
+        if root is None:
+            return
+
+        self.inorder(root.left)
+        print(root.key, end=" ")
+        self.inorder(root.right)
+
+    # Preorder
+    def preorder(self, root):
+        if root is None:
+            return
+
+        print(root.key, end=" ")
+        self.preorder(root.left)
+        self.preorder(root.right)
+
+    # Postorder
+    def postorder(self, root):
+        if root is None:
+            return
+
+        self.postorder(root.left)
+        self.postorder(root.right)
+        print(root.key, end=" ")
+
+    # Nilai minimum
+    def find_min(self, root):
+        current = root
+
+        while current.left is not None:
+            current = current.left
+
+        return current.key
+
+    # Nilai maksimum
+    def find_max(self, root):
+        current = root
+
+        while current.right is not None:
+            current = current.right
+
+        return current.key
+
+    # Hitung jumlah node
+    def count_nodes(self, root):
+        if root is None:
+            return 0
+
+        return 1 + self.count_nodes(root.left) + self.count_nodes(root.right)
+
+    # Jumlah seluruh node
+    def sum_nodes(self, root):
+        if root is None:
+            return 0
+
+        return (root.key +
+                self.sum_nodes(root.left) +
+                self.sum_nodes(root.right))
+
+
+def main():
+    bst = BST()
+    pilih = 0
+
+    while pilih != 10:
+
+        print("\n=== BINARY SEARCH TREE ===")
+        print("1. Insert")
+        print("2. Search")
+        print("3. Inorder")
+        print("4. Preorder")
+        print("5. Postorder")
+        print("6. Nilai Minimum")
+        print("7. Nilai Maksimum")
+        print("8. Hitung Node")
+        print("9. Jumlah Seluruh Node")
+        print("10. Keluar")
+
+        try:
+            pilih = int(input("Pilih: "))
+        except ValueError:
+            print("Input harus angka!")
+            continue
+
+        if pilih == 1:
+            data = int(input("Masukkan nilai: "))
+            bst.insert(data)
+
+        elif pilih == 2:
+            cari = int(input("Data yang dicari: "))
+
+            if bst.search(cari):
+                print("Data ditemukan")
+            else:
+                print("Data tidak ditemukan")
+
+        elif pilih == 3:
+            print("Inorder : ", end="")
+            bst.inorder(bst.root)
+            print()
+
+        elif pilih == 4:
+            print("Preorder : ", end="")
+            bst.preorder(bst.root)
+            print()
+
+        elif pilih == 5:
+            print("Postorder : ", end="")
+            bst.postorder(bst.root)
+            print()
+
+        elif pilih == 6:
+            print("Nilai minimum:",
+                  bst.find_min(bst.root))
+
+        elif pilih == 7:
+            print("Nilai maksimum:",
+                  bst.find_max(bst.root))
+
+        elif pilih == 8:
+            print("Jumlah node:",
+                  bst.count_nodes(bst.root))
+
+        elif pilih == 9:
+            print("Total seluruh node:",
+                  bst.sum_nodes(bst.root))
+
+        elif pilih == 10:
+            print("Program selesai")
+
+        else:
+            print("Pilihan tidak tersedia")
+
+
+if __name__ == "__main__":
+    main()
