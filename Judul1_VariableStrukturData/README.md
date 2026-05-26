@@ -38,6 +38,7 @@ Bagian if __name__ == "__main__": digunakan agar fungsi main() otomatis berjalan
 **d. Output Program**:
 
 <img width="472" height="213" alt="image" src="https://github.com/user-attachments/assets/271668c9-f81e-4942-b174-be7e35548097" />
+
 Pada output program, tampilan pertama yang muncul adalah judul program, yaitu Sistem Nilai Mahasiswa. Setelah itu, pengguna diberikan beberapa pilihan menu seperti menampilkan address array, menampilkan address setiap indeks, menginput nilai mahasiswa, menampilkan nilai, dan keluar dari program.
 
 Ketika pengguna memilih menu input nilai, program akan meminta pengguna memasukkan nilai mahasiswa satu per satu. Setiap data yang dimasukkan akan disimpan ke dalam List 1 Dimensi pada indeks yang berbeda.
