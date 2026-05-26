@@ -9,7 +9,6 @@ class BST:
     def __init__(self):
         self.root = None
 
-    # Insert data
     def insert_node(self, root, key):
         if root is None:
             return Node(key)
@@ -25,7 +24,6 @@ class BST:
     def insert(self, key):
         self.root = self.insert_node(self.root, key)
 
-    # Search data
     def search_node(self, root, key):
         if root is None:
             return False
@@ -41,7 +39,6 @@ class BST:
     def search(self, key):
         return self.search_node(self.root, key)
 
-    # Inorder
     def inorder(self, root):
         if root is None:
             return
@@ -50,7 +47,6 @@ class BST:
         print(root.key, end=" ")
         self.inorder(root.right)
 
-    # Preorder
     def preorder(self, root):
         if root is None:
             return
@@ -59,7 +55,6 @@ class BST:
         self.preorder(root.left)
         self.preorder(root.right)
 
-    # Postorder
     def postorder(self, root):
         if root is None:
             return
@@ -68,7 +63,6 @@ class BST:
         self.postorder(root.right)
         print(root.key, end=" ")
 
-    # Nilai minimum
     def find_min(self, root):
         current = root
 
@@ -77,7 +71,6 @@ class BST:
 
         return current.key
 
-    # Nilai maksimum
     def find_max(self, root):
         current = root
 
@@ -86,14 +79,12 @@ class BST:
 
         return current.key
 
-    # Hitung jumlah node
     def count_nodes(self, root):
         if root is None:
             return 0
 
         return 1 + self.count_nodes(root.left) + self.count_nodes(root.right)
 
-    # Jumlah seluruh node
     def sum_nodes(self, root):
         if root is None:
             return 0
